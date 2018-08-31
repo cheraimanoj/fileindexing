@@ -1,0 +1,9 @@
+*This is an outline
+*This is the second numbered item in the outline
+*Numbers ***
+**Lots**s
+*** And lots
+**** Of numbers
+**Less Numbers
+*** More Numbers
+* One number again

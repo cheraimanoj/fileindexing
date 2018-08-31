@@ -10,15 +10,14 @@ def getSpace(prev_dot,listofline,dot_count,i,val, sp = 0):
 
     if sp:
         for j in range(prev + 1, i):
-            if(listofline[j] != '\n'):
-                listofline[j] = listofline[j].strip()
             listofline[j] = ''.join([' '] * prev_dot[1]) + '  ' + listofline[j]
 
 #with open(sys.argv[1],'r') as filedata: 
 #    listofline = filedata.readlines()
 listofline=[]
 for line in sys.stdin:
-    listofline.append(line)
+    if(line != '\n'):
+        listofline.append(line.strip())
 
 list_star = []
 list_dot=[]
@@ -39,10 +38,10 @@ for i,line in enumerate(listofline):
                 list_star=list_star[:len_stars-len(list_star)]
                 list_star[-1]+=1
 
-        s1 = line.split()
-        s1[0] ='.'.join(str(x) for x in list_star)
-        listofline[i] = ' '.join(s1)
-
+        each_line = line.split()
+        each_line[0] ='.'.join(str(x) for x in list_star)
+        listofline[i] = ' '.join(each_line)
+        
     if (line.startswith('.')):
         dot_count=len(line.split()[0])
         #Fetchin first dot in first star
@@ -62,4 +61,4 @@ for i,line in enumerate(listofline):
             prev_dot = (i, dot_count)
 
 getSpace(prev_dot,listofline,dot_count,i,'-')
-print(''.join(listofline))
+print('\n'.join(listofline))
